@@ -3,6 +3,7 @@ package com.fieldcam.bucketcounter
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.media.RingtoneManager
 import android.graphics.Color
 import android.os.Bundle
 import android.text.InputType
@@ -130,6 +131,12 @@ class MainActivity : AppCompatActivity() {
 
             val analyzer = BucketAnalyzer(fsm) { result ->
                 runOnUiThread {
+                    if (result.counted) {
+                        RingtoneManager.getRingtone(
+                            this,
+                            RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+                        )?.play()
+                    }
                     overlayView.updateFrame(
                         transform = result.transform,
                         roiRectAnalysis = result.roiRectAnalysis,

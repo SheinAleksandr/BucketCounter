@@ -45,7 +45,8 @@ class BucketAnalyzer(
         val fsmStatus: String,
         val lastStatus: String,
         val flashUntilMs: Long,
-        val flashValue: Int
+        val flashValue: Int,
+        val counted: Boolean
     )
 
     // Set from MainActivity once the overlay view has a known size.
@@ -153,7 +154,8 @@ class BucketAnalyzer(
                     fsmStatus = fsm.fsmStatus,
                     lastStatus = lastStatus,
                     flashUntilMs = flashUntilMs,
-                    flashValue = flashValue
+                    flashValue = flashValue,
+                    counted = counted
                 )
             )
             rotated.release()
